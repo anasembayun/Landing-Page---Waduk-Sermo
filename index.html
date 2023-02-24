@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>JQuery and LeafletJS Learning</title>
+        <!-- Favicon-->
+        <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+        <!-- Font Awesome icons (free version)-->
+        <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
+        <!-- Google fonts-->
+        <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css" />
+        <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700" rel="stylesheet" type="text/css" />
+        <!-- Core theme CSS (includes Bootstrap)-->
+        <link href="css/styles.css" rel="stylesheet" />
+        <!-- Semantic UI -->
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.5.0/components/icon.min.css" rel="stylesheet" type="text/css" />
+        <!-- LeafletJS -->
+        <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css" integrity="sha256-kLaT2GOSpHechhsozzB+flnD+zUyjE2LlfWPgU04xyI=" crossorigin=""/>
+        <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js" integrity="sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM=" crossorigin=""></script>
+        <!-- JQuery -->
+        <link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+        <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+        <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+        <script>
+        $( function() {
+            $( "#date" ).datepicker();
+        } );
+        </script>
+        <!-- CSS -->
+        <style>
+            #map { height: 500px; }
+            .input-group-btn-vertical {
+            position: relative;
+            white-space: nowrap;
+            width: 50%;
+            vertical-align: middle;
+            display: table-cell;
+            }
+            .input-group-btn-vertical > .btn {
+            display: block;
+            float: none;
+            width: 100%;
+            max-width: 100%;
+            position: relative;
+            border-radius: 0;
+            }
+            .input-group-btn-vertical > .btn:first-child {
+            border-top-right-radius: 4px;
+            }
+            .input-group-btn-vertical > .btn:last-child {
+            border-bottom-right-radius: 4px;
+            }
+            .input-group-btn-vertical i{
+            position: absolute;
+            top: 0;
+            left: 4px;
+            }
+        </style>
+    </head>
+    <body id="page-top">
+        <!-- Navigation-->
+        <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
+            <div class="container">
+                <a class="navbar-brand" href="#page-top"><img src="" alt="" /></a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                    Menu
+                    <i class="fas fa-bars ms-1"></i>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarResponsive">
+                    <ul class="navbar-nav text-uppercase ms-auto py-4 py-lg-0">
+                        <li class="nav-item"><a class="nav-link" href="#services">Services</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#portfolio">Gallery</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#team">Location</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#contact">Book Tickets</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <!-- Masthead-->
+        <header class="masthead">
+            <div class="container">
+                <div class="masthead-subheading">Welcome To Waduk Sermo!</div>
+                <div class="masthead-heading text-uppercase">It's Nice To Meet You</div>
+                <a class="btn btn-primary btn-xl text-uppercase" href="#services">Tell Me More</a>
+            </div>
+        </header>
+        <!-- Services-->
+        <section class="page-section" id="services">
+            <div class="container">
+                <div class="text-center">
+                    <h2 class="section-heading text-uppercase">Services</h2>
+                    <h3 class="section-subheading text-muted">Lorem ipsum dolor sit amet consectetur.</h3>
+                </div>
+                <div class="row text-center">
+                    <div class="col-md-4">
+                        <span class="fa-stack fa-4x">
+                            <i class="fas fa-circle fa-stack-2x text-primary"></i>
+                            <i class="warehouse icon fa-stack-1x fa-inverse" style="margin-left: 2.6rem; margin-top: 1rem;"></i>
+                        </span>
+                        <h4 class="my-3">Camping Area</h4>
+                        <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam architecto quo inventore harum ex magni, dicta impedit.</p>
+                    </div>
+                    <div class="col-md-4">
+                        <span class="fa-stack fa-4x">
+                            <i class="fas fa-circle fa-stack-2x text-primary"></i>
+                            <i class="camera retro icon fa-stack-1x fa-inverse" style="margin-left: 2.7rem; margin-top: 1rem;"></i>
+                        </span>
+                        <h4 class="my-3">Photo Spots</h4>
+                        <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam architecto quo inventore harum ex magni, dicta impedit.</p>
+                    </div>
+                    <div class="col-md-4">
+                        <span class="fa-stack fa-4x">
+                            <i class="fas fa-circle fa-stack-2x text-primary"></i>
+                            <i class="ship icon fa-stack-1x fa-inverse" style="margin-left: 2.6rem; margin-top: 1rem;"></i>
+                        </span>
+                        <h4 class="my-3">Boat Rent</h4>
+                        <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam architecto quo inventore harum ex magni, dicta impedit.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Portfolio Grid-->
+        <section class="page-section bg-light" id="portfolio">
+            <div class="container">
+                <div class="text-center">
+                    <h2 class="section-heading text-uppercase">Gallery</h2>
+                    <h3 class="section-subheading text-muted">Lorem ipsum dolor sit amet consectetur.</h3>
+                </div>
+                <div class="row">
+                    <div class="col-lg-4 col-sm-6 mb-4">
+                        <!-- Portfolio item 1-->
+                        <div class="portfolio-item">
+                            <img class="img-fluid" src="../Qjuery_LeafletJS_AnaSembayun/assets/img/gallery/1.png" alt="..." />
+                            <div class="portfolio-caption">
+                                <div class="portfolio-caption-heading">Waduk Sermo</div>
+                                <div class="portfolio-caption-subheading text-muted">Illustration</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-sm-6 mb-4">
+                        <!-- Portfolio item 2-->
+                        <div class="portfolio-item">
+                            <img class="img-fluid" src="../Qjuery_LeafletJS_AnaSembayun/assets/img/gallery/2.png" alt="..." />
+                            <div class="portfolio-caption">
+                                <div class="portfolio-caption-heading">Photo Spot</div>
+                                <div class="portfolio-caption-subheading text-muted">Illustration</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-sm-6 mb-4">
+                        <!-- Portfolio item 3-->
+                        <div class="portfolio-item">
+                            <img class="img-fluid" src="../Qjuery_LeafletJS_AnaSembayun/assets/img/gallery/3.png" alt="..." />
+                            <div class="portfolio-caption">
+                                <div class="portfolio-caption-heading">Waduk</div>
+                                <div class="portfolio-caption-subheading text-muted">Illustration</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-sm-6 mb-4 mb-lg-0">
+                        <!-- Portfolio item 4-->
+                        <div class="portfolio-item">
+                            <img class="img-fluid" src="../Qjuery_LeafletJS_AnaSembayun/assets/img/gallery/4.jpeg" alt="..." />
+                            <div class="portfolio-caption">
+                                <div class="portfolio-caption-heading">Boat</div>
+                                <div class="portfolio-caption-subheading text-muted">Illustration</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-sm-6 mb-4 mb-sm-0">
+                        <!-- Portfolio item 5-->
+                        <div class="portfolio-item">
+                            <img class="img-fluid" src="../Qjuery_LeafletJS_AnaSembayun/assets/img/gallery/5.png" alt="..." />
+                            <div class="portfolio-caption">
+                                <div class="portfolio-caption-heading">Camping</div>
+                                <div class="portfolio-caption-subheading text-muted">Illustration</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-sm-6">
+                        <!-- Portfolio item 6-->
+                        <div class="portfolio-item">
+                            <img class="img-fluid" src="../Qjuery_LeafletJS_AnaSembayun/assets/img/gallery/6.jpeg" alt="..." />
+                            <div class="portfolio-caption">
+                                <div class="portfolio-caption-heading">Sunset</div>
+                                <div class="portfolio-caption-subheading text-muted">Illustration</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- About-->
+        <section class="page-section" id="about">
+            <div class="container">
+                <div class="text-center">
+                    <h2 class="section-heading text-uppercase">About</h2>
+                    <h3 class="section-subheading text-muted">Lorem ipsum dolor sit amet consectetur.</h3>
+                </div>
+                <div class="row text-center">
+                    <p class="text-muted">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent condimentum pharetra dignissim. Phasellus lobortis non libero at eleifend. Aliquam et pulvinar nulla, et auctor eros. Cras elementum scelerisque eros, in maximus nisl convallis eget. Suspendisse potenti. Curabitur eget mauris nec tellus vulputate blandit non blandit lorem. Nullam in magna lorem. Aenean nisl nisl, pellentesque at ex ut, bibendum malesuada turpis. Nunc in ipsum ligula.
+
+                        Ut ultricies hendrerit ex id dictum. Nulla fermentum dolor nisl. Nullam tempor ex non iaculis pharetra. Etiam blandit arcu tortor, a imperdiet dolor egestas ac. Fusce a vehicula mauris, consequat venenatis erat. In hendrerit eros nec tincidunt facilisis. Vestibulum consectetur a ipsum sit amet venenatis. Morbi molestie, odio eu egestas posuere, quam arcu tristique orci, eu scelerisque magna odio eget dui. Nunc pellentesque molestie dapibus. Suspendisse eleifend suscipit tortor, sed ultrices arcu semper sit amet. Nullam dapibus tellus condimentum laoreet dignissim.
+                        
+                        Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Sed sagittis eget orci ut molestie. Sed dolor ex, laoreet in consectetur pharetra, elementum ut nisl. Duis massa enim, suscipit a elit quis, pharetra tristique arcu. Etiam auctor tincidunt nulla vitae lacinia. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Suspendisse vel pellentesque nisl. Integer nunc elit, suscipit sit amet augue ac, interdum luctus purus. In ut velit maximus, placerat lorem in, tristique nisi. Mauris pulvinar eu ante at porta. Nam scelerisque in nulla ut viverra. Morbi ac lectus ut eros rutrum vestibulum eu in nisi. Vivamus nec sapien eros. Vivamus pharetra aliquam massa, ac commodo nisi blandit eget. Sed ut ex accumsan elit facilisis facilisis. Cras scelerisque accumsan leo, condimentum lacinia nulla consectetur accumsan. 
+                    </p>
+                </div>
+            </div>
+        </section>
+        <!-- Location-->
+        <section class="page-section bg-light" id="team">
+            <div class="container">
+                <div class="text-center">
+                    <h2 class="section-heading text-uppercase">Our Location</h2>
+                    <h3 class="section-subheading text-muted">Lorem ipsum dolor sit amet consectetur.</h3>
+                </div>
+                <div id="map"></div>
+                    
+            </div>
+        </section>
+        <!-- Book Tickets-->
+        <section class="page-section" id="contact">
+            <div class="container">
+                <div class="text-center">
+                    <h2 class="section-heading text-uppercase">Book Tickets</h2>
+                    <h3 class="section-subheading text-muted">Ticket price : Rp.10.000,00</h3>
+                </div>
+                <!-- * * * * * * * * * * * * * * *-->
+                <!-- * * SB Forms Contact Form * *-->
+                <!-- * * * * * * * * * * * * * * *-->
+                <!-- This form is pre-integrated with SB Forms.-->
+                <!-- To make this form functional, sign up at-->
+                <!-- https://startbootstrap.com/solution/contact-forms-->
+                <!-- to get an API token!-->
+                <form id="contactForm" data-sb-form-api-token="API_TOKEN">
+                    <div class="row align-items-stretch mb-5">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <!-- Name input-->
+                                <input class="form-control" id="name" type="text" placeholder="Your Name *" data-sb-validations="required" />
+                                <div class="invalid-feedback" data-sb-feedback="name:required">A name is required.</div>
+                            </div>
+                            <div class="form-group">
+                                <!-- Email address input-->
+                                <input class="form-control" id="email" type="email" placeholder="Your Email *" data-sb-validations="required,email" />
+                                <div class="invalid-feedback" data-sb-feedback="email:required">An email is required.</div>
+                                <div class="invalid-feedback" data-sb-feedback="email:email">Email is not valid.</div>
+                            </div>
+                            <div class="form-group mb-md-0">
+                                <!-- Phone number input-->
+                                <input class="form-control" id="phone" type="tel" placeholder="Your Phone *" data-sb-validations="required" />
+                                <div class="invalid-feedback" data-sb-feedback="phone:required">A phone number is required.</div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <!-- Date input-->
+                                <input class="form-control" id="date" type="text" placeholder="Date *" data-sb-validations="required" />
+                                <div class="invalid-feedback" data-sb-feedback="date:required">A date is required.</div>
+                            </div>
+                            <div class="form-group">
+                                <div class="input-group spinner">
+                                    <!-- Quantity input -->
+                                    <input type="text" class="form-control" id="qty" value="1" placeholder="Quantity *" data-sb-validations="required">
+                                    <div class="input-group-btn-vertical">
+                                        <button class="btn btn-primary" type="button"><i class="fa fa-caret-up"></i></button>
+                                        <button class="btn btn-primary" type="button"><i class="fa fa-caret-down"></i></button>
+                                    </div>
+                                    <div class="invalid-feedback" data-sb-feedback="qty:required">A quantity is required.</div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <!-- Price input-->
+                                <input class="form-control" id="price" type="text" placeholder="Price *" data-sb-validations="required" />
+                                <div class="invalid-feedback" data-sb-feedback="price:required">A price is required.</div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Submit success message-->
+                    <!---->
+                    <!-- This is what your users will see when the form-->
+                    <!-- has successfully submitted-->
+                    <div class="d-none" id="submitSuccessMessage">
+                        <div class="text-center text-white mb-3">
+                            <div class="fw-bolder">Form submission successful!</div>
+                            To activate this form, sign up at
+                            <br />
+                            <a href="https://startbootstrap.com/solution/contact-forms">https://startbootstrap.com/solution/contact-forms</a>
+                        </div>
+                    </div>
+                    <!-- Submit error message-->
+                    <!---->
+                    <!-- This is what your users will see when there is-->
+                    <!-- an error submitting the form-->
+                    <div class="d-none" id="submitErrorMessage"><div class="text-center text-danger mb-3">Error sending message!</div></div>
+                    <!-- Submit Button-->
+                    <div class="text-center"><button class="btn btn-primary btn-xl text-uppercase disabled" id="submitButton" type="submit">Send</button></div>
+                </form>
+            </div>
+        </section>
+        <!-- Footer-->
+        <footer class="footer py-4">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-lg-4 text-lg-start">Copyright &copy; Your Website 2022</div>
+                    <div class="col-lg-4 my-3 my-lg-0">
+                        <a class="btn btn-dark btn-social mx-2" href="#!" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a class="btn btn-dark btn-social mx-2" href="#!" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a class="btn btn-dark btn-social mx-2" href="#!" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                    <div class="col-lg-4 text-lg-end">
+                        <a class="link-dark text-decoration-none me-3" href="#!">Privacy Policy</a>
+                        <a class="link-dark text-decoration-none" href="#!">Terms of Use</a>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        <!-- Bootstrap core JS-->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+        <!-- Core theme JS-->
+        <script src="js/scripts.js"></script>
+        <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
+        <!-- * *                               SB Forms JS                               * *-->
+        <!-- * * Activate your form at https://startbootstrap.com/solution/contact-forms * *-->
+        <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
+        <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
+        <!-- Leaflet JS -->
+        <script>
+            var map = L.map('map').setView([-7.838481,110.129826], 13);
+            L.tileLayer('https://api.maptiler.com/maps/basic-v2/{z}/{x}/{y}.png?key=nVViwkJj04ZPWMWtIjbx', {
+                maxZoom: 19,
+                attribution: '<a href="https://www.maptiler.com/copyright/" target="_blank">&copy; MapTiler</a> <a href="https://www.openstreetmap.org/copyright" target="_blank">&copy; OpenStreetMap contributors</a>'
+                }).addTo(map);
+
+            var circle = L.circle([-7.838481,110.129826], {
+                color: 'red',
+                fillColor: '#f03',
+                fillOpacity: 0.5,
+                radius: 500
+            }).addTo(map);
+
+            var popup = L.popup()
+                .setLatLng([-7.838481,110.129826])
+                .setContent("welcome to waduk sermo!")
+                .openOn(map);
+        </script>
+        <script>
+            $(document).ready(function(){
+            $('.spinner input').keydown(function(e){
+                e.preventDefault();
+                return false;
+            });
+            var minNumber = 1;
+            var maxNumber = 1000;
+            $('.spinner .btn:first-of-type').on('click', function() {
+                if($('.spinner input').val() == maxNumber){
+                    return false;
+                }else{
+                    $('.spinner input').val( parseInt($('.spinner input').val(), 10) + 1);
+                }
+            });
+    
+            $('.spinner .btn:last-of-type').on('click', function() {
+                if($('.spinner input').val() == minNumber){
+                    return false;
+                }else{
+                    $('.spinner input').val( parseInt($('.spinner input').val(), 10) - 1);
+                }
+            });
+        });
+    </script>
+    
+    </body>
+</html>
